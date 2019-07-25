@@ -76,14 +76,7 @@ export default (editor, opts = {}) => {
         timedInterval && clearInterval(timedInterval);
         timedInterval = setTimeout(() => {
           const { model } = this;
-          const content = model.get(keyCustomCode) || '';
           let droppable = 1;
-
-          // Avoid rendering codes with scripts
-          if (content.indexOf('<script') >= 0) {
-            this.el.innerHTML = opts.placeholderScript;
-            droppable = 0;
-          }
 
           model.set({ droppable });
         }, 0);
